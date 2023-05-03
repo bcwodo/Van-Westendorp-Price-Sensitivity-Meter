@@ -83,7 +83,7 @@ def plot_function(cdfs,
                   Point_of_Marginal_Expensiveness, PME_height,
                   Indifference_Price_Point, IPP_height,
                   Optimal_Price_Point, OPP_height,
-                  title=""):
+                  title="", plot_template="plotly_dark"):
     line_width = 1
     marker_size = 3
 
@@ -224,7 +224,7 @@ def plot_function(cdfs,
     layout = go.Layout(title=f"Van Westendorp's Price Sensitivity Meter<br>{title}",
                     xaxis=dict(title='$ Price', range=(cdfs.Price.min()-5, cdfs.Price.max()+5)),
                     yaxis=dict(title='% of Participants', range=(-0.1,1.1)),
-                    template="plotly_white"
+                    template=plot_template
                     )
     
     fig = go.Figure(data=data, layout=layout)
@@ -234,7 +234,7 @@ def plot_function(cdfs,
 
 
 # Get results
-def results(df, price_cols, plot=True, plot_title=""):
+def results(df, price_cols, plot=True, plot_title="", plot_template="plotly_dark"):
     df = validate(df, price_cols)
     cdfs = cdf_table(df, price_cols)
 
@@ -259,7 +259,7 @@ def results(df, price_cols, plot=True, plot_title=""):
                       Point_of_Marginal_Expensiveness, PME_height,
                       Indifference_Price_Point, IPP_height,
                       Optimal_Price_Point, OPP_height,
-                      plot_title)
+                      plot_title, plot_template)
 
 
 '''
